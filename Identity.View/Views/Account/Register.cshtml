@@ -1,0 +1,139 @@
+﻿
+@model RegisterDTO
+@{
+}
+<head>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Identity.View.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+
+<div class="form-container">
+
+
+    <div class="text-grey"> <span>Contacts</span>
+        <i class="fa-solid fa-caret-right"></i>
+        <span>Register</span>
+        </div>
+
+        <div class="form-container">
+            Have an Account ? <a asp-action="Login" asp-controller="Account" class="link-hover">Login</a>
+            <h2 class="text-large">Register</h2>
+        </div>
+
+    <form asp-action="Register" method="post">
+
+        <!-- Username -->
+        <div class="form-field-flex">
+            <div class="=w-25">
+                <label asp-for="UserName" >Name</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="UserName" class="form-input" />
+                <br/>
+                <span asp-validation-for="UserName" style="color:red" class="text-red"></span>
+            </div>
+        </div>
+
+
+
+        <!-- Email -->
+        <div class="form-field-flex">
+            <div class="=w-25">
+                <label asp-for="UserEmail" class="form-labelpt">Email</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="UserEmail" class="form-input" />
+                <br/>
+                    <span asp-validation-for="UserEmail" style="color:red" class="text-red"></span>
+            </div>
+        </div>
+
+
+        <!-- Phone -->
+        <div class="form-field-flex">
+            <div class="=w-25">
+                <label asp-for="UserPhone" class="form-labelpt">Phone</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="UserPhone" class="form-input" />
+                <br/>
+                    <span asp-validation-for="UserPhone" style="color:red"  class="text-red"></span>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-field-flex">
+            <div class="=w-25">
+                <label asp-for="UserPassword" class="form-labelpt">Password</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="UserPassword" class="form-input" />
+                <br/>
+                <span asp-validation-for="UserPassword" style="color:red" class="text-red"></span>
+            </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-field-flex">
+            <div class="=w-25">
+                <label asp-for="UserConfirmPassword" class="form-labelpt">Confirm Password</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="UserConfirmPassword" class="form-input" />
+                <br/>
+                    <span asp-validation-for="UserConfirmPassword" style="color:red" class="text-red"></span>
+            </div>
+        </div>
+            <!-- UserType -->
+            <div class="form-field-flex">
+                <div class="=w-25">
+                    <label asp-for="AccountType">Account Type</label>
+                </div>
+                <div class="flex-1">
+                    <input type="radio" asp-for="AccountType" id="User" value="User" class="form-input" />
+                    <label for="User">User</label>
+                </div>
+                <div class="flex-1">
+                    <input type="radio" asp-for="AccountType" id="Merchant" value="Merchant" class="form-input" />
+                    <label for="Merchant">Merchant</label>
+                </div>
+                <div class="flex-1">
+                    <input type="radio" asp-for="AccountType" id="Admin" value="Admin" class="form-input" />
+                    <label for="Admin">Admin</label>
+                </div>
+            </div>
+
+        <!-- Button -->
+        <div class="form-field-flex">
+            <div class="=w-25">
+              <button class="accordion-button button-green-back" type="submit">Register</button>
+                <div asp-validation-summary="All" class="text-red"></div>  
+                    @if(ViewBag.Errors != null)
+                    {
+                        <div class="text-red ml">
+                            <ul>
+                                @foreach(var error in ViewBag.Errors)
+                                {
+                                    <li style="color:red" class="ml">@error</li>
+                                }
+                            </ul>
+                            </div>
+                    }
+
+                </div>
+            
+        </div>
+
+         
+
+    </form>
+</div>
+
+
+
+</body>
